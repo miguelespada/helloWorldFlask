@@ -2,30 +2,37 @@ from flask import Flask, render_template, make_response
 from flask import request
 from random import randint
 from time import time
-from humbledb import Mongo, Document
+import pymongo
 import cPickle
+from pymongo import MongoClient
+
+MONGODB_URI = "mongodb://heroku_90h5lf7z:ivpvq47r7je2j93993eba59pp6@ds117199.mlab.com:17199/heroku_90h5lf7z"
+
+
+client = MongoClient(MONGODB_URI)
+db = client.operation
+collection = db.add
 
 
 with open('classifier.pkl', 'rb') as fid:
     regr_loaded = cPickle.load(fid)
 
-class OP(Document):
-  config_database = 'operation'
-  config_collection = 'add'
+# class OP(Document):
+#   config_database = 'operation'
+#   config_collection = 'add'
 
 app = Flask(__name__)
 
 @app.route('/',methods = ["GET", "POST"])
 def hello_world():
   if request.method == 'POST':
-    op = OP()
+    op = {}
     op["result"] = request.form['value']
     op["v1"] = request.form['v1']
     op["v2"] = request.form['v2']
     op["ellapsed"] = str(time() - float(request.form['timestamp']))
     if int(op["v1"]) + int(op["v2"]) == int(op["result"]):
-      with Mongo:
-        OP.insert(op)
+      collection.insert(op)
       op["prediction"] = regr_loaded.predict([int(op["v1"]), int(op["v2"]),  int(op["v1"]) < 10 or int(op["v2"]) < 10])[0]
       return render_template("result.html", value = op)
     else:
@@ -41,8 +48,7 @@ def hello_world():
 
 @app.route('/list',methods = ["GET"])
 def list():
-  with Mongo:
-    ops = OP.find()
+    ops = collection.find()
     ss = ""
     for o in ops:
       try:
