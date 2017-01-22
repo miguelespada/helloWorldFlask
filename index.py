@@ -10,7 +10,7 @@ MONGODB_URI = "mongodb://heroku_90h5lf7z:ivpvq47r7je2j93993eba59pp6@ds117199.mla
 
 
 client = MongoClient(MONGODB_URI)
-db = client.operation
+db = client.get_default_database()
 collection = db.add
 
 
