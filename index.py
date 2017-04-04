@@ -6,8 +6,8 @@ import pymongo
 import cPickle
 from pymongo import MongoClient
 
-MONGODB_URI = "mongodb://heroku_90h5lf7z:ivpvq47r7je2j93993eba59pp6@ds117199.mlab.com:17199/heroku_90h5lf7z"
-
+# MONGODB_URI = "mongodb://heroku_90h5lf7z:ivpvq47r7je2j93993eba59pp6@ds117199.mlab.com:17199/heroku_90h5lf7z"
+MONGODB_URI =  "mongodb://heroku_0nbk9212:8qm09skskrvff23hg3o7uet571@ds145750.mlab.com:45750/heroku_0nbk9212"
 
 client = MongoClient(MONGODB_URI)
 db = client.get_default_database()
