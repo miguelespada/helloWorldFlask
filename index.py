@@ -17,10 +17,6 @@ collection = db.add
 with open('classifier.pkl', 'rb') as fid:
     regr_loaded = cPickle.load(fid)
 
-# class OP(Document):
-#   config_database = 'operation'
-#   config_collection = 'add'
-
 app = Flask(__name__)
 
 @app.route('/',methods = ["GET", "POST"])
@@ -33,7 +29,7 @@ def hello_world():
     op["ellapsed"] = str(time() - float(request.form['timestamp']))
     if int(op["v1"]) + int(op["v2"]) == int(op["result"]):
       collection.insert(op)
-      op["prediction"] = regr_loaded.predict([int(op["v1"]), int(op["v2"]),  int(op["v1"]) < 10 or int(op["v2"]) < 10])[0]
+      op["prediction"] = regr_loaded.predict([int(op["v1"]), int(op["v2"]),  int(op["v1"]) < 10 or int(op["v2"]) < 10, int(op["v1"]) % 10, int(op["v2"]) % 10])[0]
       return render_template("result.html", value = op)
     else:
       op["timestamp"] = float(request.form['timestamp'])
@@ -64,3 +60,7 @@ def list():
     output.headers["Content-Disposition"] = "attachment; filename=export.csv"
     output.headers["Content-type"] = "text/csv"
     return output
+
+
+if __name__ == "__main__":
+  app.run()
