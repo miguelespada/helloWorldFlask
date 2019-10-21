@@ -79,5 +79,5 @@ traitlets==4.3.1
 urllib3==1.20
 virtualenv-clone==0.2.6
 wcwidth==0.1.7
-Werkzeug==0.11.15
+Werkzeug==0.15.3
 widgetsnbextension==1.2.6
