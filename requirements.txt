@@ -33,7 +33,7 @@ jupyter-client==4.4.0
 jupyter-console==5.0.0
 jupyter-core==4.2.1
 lockfile==0.12.2
-lxml==3.7.3
+lxml==4.6.3
 MarkupSafe==0.23
 matplotlib==1.5.3
 -e git+https://github.com/pallets/flask.git@09973a7387d6239bae310af6c1d580f191b47c0a#egg=minitwit&subdirectory=examples/minitwit
