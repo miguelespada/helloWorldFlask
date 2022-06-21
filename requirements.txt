@@ -41,7 +41,7 @@ mistune==0.7.3
 nbconvert==5.0.0
 nbformat==4.2.0
 notebook==4.3.1
-numpy==1.11.0
+numpy==1.22.0
 opencv-python==3.1.0.3
 pandas==0.19.2
 pandocfilters==1.4.1
