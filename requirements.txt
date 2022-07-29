@@ -37,7 +37,7 @@ lxml==3.7.3
 MarkupSafe==0.23
 matplotlib==1.5.3
 -e git+https://github.com/pallets/flask.git@09973a7387d6239bae310af6c1d580f191b47c0a#egg=minitwit&subdirectory=examples/minitwit
-mistune==0.7.3
+mistune==2.0.3
 nbconvert==5.0.0
 nbformat==4.2.0
 notebook==4.3.1
