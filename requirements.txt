@@ -22,7 +22,7 @@ html5lib==0.9999999
 humbledb==5.6.1
 imdbpie==4.2.0
 ipykernel==4.5.2
-ipython==5.1.0
+ipython==8.10.0
 ipython-genutils==0.1.0
 ipywidgets==5.2.2
 itsdangerous==0.24
